@@ -2,19 +2,16 @@
   "name": "e-date-server",
   "version": "1.0.0",
   "description": "Backend for E-Date App",
-  "main": "server.ts",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly ./server.ts",
-    "prod": "tsc && node ./build/app.ts"
+    "dev": "pm2 start server.js --name e-date-server && pm2 monit",
+    "kill": "pm2 stop e-date-server"
   },
   "author": "Victor Santaella",
   "license": "MIT",
   "dependencies": {
-    "@types/express": "^4.17.2",
     "express": "^4.17.1",
-    "socket.io": "^2.3.0",
-    "typescript": "^3.7.2"
+    "socket.io": "^2.3.0"
   }
 }
