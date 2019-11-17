@@ -3,7 +3,6 @@ const app = express();
 var server = app.listen(3000);
 var io = require('socket.io').listen(server);
 
-
 // Settings for CORS
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -26,6 +25,15 @@ app.use(function (req, res, next) {
 io.on('connection', (socket) => {
 
     socket.on('CHECK_USER_NAME', () => {
-        socket.broadcast.send('VERIFY_USER_NAME', true);
+        console.log('entra');
+        socket.send('VERIFY_USER_NAME', true);
     })
 });
+
+/* API SYSTEM */
+
+/* VERIFY USERNAME EXIST */
+app.get("/getUserName", (req, res, next) => {
+    res.send(["Tony","Lisa","Michael","Ginger","Food"]);
+});
+
